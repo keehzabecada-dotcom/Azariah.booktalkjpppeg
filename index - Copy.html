@@ -1,0 +1,1576 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Booktalk | Azariah_Cha</title> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <!--Linking Front Awesome for icons-->
+    <link rel="stylesheet" href="style.css">
+    
+</head>
+
+
+
+
+        <body>
+          <!--Header / Navbar-->
+            <header> 
+            <nav class="navbar section-content">
+                <a href="#" class="nav-logo">
+           <h2 class="logo-text"> 📚 Books </h2>
+                </a>
+                <ul class="nav-menu">
+           <button id="menu-close-button" class="fas fa-times"></button>         
+            <li class="nav-item">
+                <a href="#" class="nav-link">Home</a>
+            </li>
+            <li class="nav-item">
+                <a href="#freedom wall" class="nav-link">Freedom Wall</a>
+            </li>
+            <li class="nav-item">
+                <a href="#about" class="nav-link">About</a>
+            </li>
+            <li class="nav-item">
+    <a href="#books" class="nav-link">Explore</a>
+</li>
+
+            <li class="nav-item">
+                <a href="#contact" class="nav-link">Contact</a>
+            </li>
+           </ul>
+
+           <button id="menu-open-button" class="fas fa-bars"></button>
+    </nav>
+</header>
+
+<main>
+
+  
+     <!--Hero section-->
+  <section class="hero-section">
+    <div class="section-content">
+      <div class="hero-details">
+        <h2 class="title">Students’ Perspective</h2>
+        <h3 class="subtitle">A place to relax, share thoughts, and talk about books openly.</h3>
+        <p class="description">
+          Where books meet student voices — a vibrant space to share insights, reflect on ideas, explore learning, and engage in open discussions that inspire curiosity and meaningful connections.
+        </p>
+
+        <div class="buttons">
+          <a href="#" class="button write-read-now">Write & Read Now</a>
+          <a href="#" class="button email-us">Email Us</a>
+        </div>
+      </div>
+                     <div class="hero-image-wrapper">
+                     <img src="download.png"
+                      alt="WEBSITE" class="vscode">
+
+                       
+         </div>
+       </div>
+    </section>
+
+
+<!-- About section -->
+<section class="about-section" id="about">
+  <div class="section-content">
+
+    <div class="about-image-wrapper">
+      <img src="wp15493430.webp" alt="About" class="about-image">
+    </div>
+
+    <div class="about-details">
+      <h2 class="section-title">What’s the Tea?</h2>
+      <p class="text">
+       Welcome to the Freedom Wall! This is a safe, open, and inclusive space where everyone are encouraged to freely express their thoughts, opinions, ideas, and experiences through comments. Whether you want to share something meaningful, raise awareness about an issue, give feedback, or simply speak your truth, your voice matters here.
+      </p>
+      <div class="social-link-list">
+        <a href="#" class="social-link"><i class="fa-brands fa-facebook"></i></a>
+        <a href="#" class="social-link"><i class="fa-brands fa-instagram"></i></a>
+        <a href="#" class="social-link"><i class="fa-brands fa-x-twitter"></i></a>
+        <a href="#" class="social-link"><i class="fa-brands fa-wordpress"></i></a>
+      </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+
+  </div>
+</section>
+   </main>
+
+    <!-- Books Section -->
+    <section class="books-section" id="books">
+      <div class="section-content">
+        <h2 class="section-title"> BookTalk's picks</h2>
+        <p class="text">Explore and see which books students are reading!</p>
+
+        
+        <!-- Search Bar -->
+        <div class="search-bar">
+          <input type="text" id="book-search-input" placeholder="Search books...">
+          <button id="book-search-btn">Search</button>
+        </div>
+
+        <!-- Books Container -->
+        <div id="books-container" class="books-container">
+          <!-- Book cards will appear here -->
+        </div>
+      </div>
+    </section>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Notebook Editor with Autosave</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Arial', sans-serif;
+      background: #f4f4f4;
+      overflow: auto; /* Page scroll works */
+    }
+
+    /* Floating + button */
+    #createBtn {
+      position: fixed;
+      bottom: 20px;
+      left: 20px;
+      width: 60px;
+      height: 60px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 50%;
+      font-size: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+      cursor: pointer;
+      z-index: 1000;
+    }
+
+    #createBtn:hover {
+      background-color: #45a049;
+    }
+
+    /* Modal fullscreen */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: #fdfdf5;
+      z-index: 999;
+      overflow: hidden;
+    }
+
+    /* Close button */
+    .close {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      font-size: 36px;
+      color: #333;
+      cursor: pointer;
+      z-index: 1001;
+    }
+
+    /* Sidebar */
+    #sidebar {
+      width: 300px;
+      background: #2d2d2d;
+      color: white;
+      padding: 20px;
+      position: absolute;
+      top: 0;
+      left: -300px;
+      transition: 0.3s ease;
+      height: 100%;
+      z-index: 1000;
+      box-shadow: 5px 0 15px rgba(0, 0, 0, 0.3);
+    }
+
+    #sidebar.active {
+      left: 0;
+    }
+
+    .chapterList {
+      margin-top: 50px;
+    }
+
+    .chapterList button {
+      background: #444;
+      border: none;
+      padding: 12px;
+      margin-bottom: 10px;
+      width: 100%;
+      text-align: left;
+      font-size: 18px;
+      cursor: pointer;
+      color: white;
+      border-radius: 5px;
+    }
+
+    .chapterList button:hover {
+      background: #575757;
+    }
+
+    /* Main editor fullscreen */
+    #mainEditor {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      padding: 60px 40px 40px 40px;
+      transition: margin-left 0.3s ease;
+      box-sizing: border-box;
+    }
+
+    /* Story Title */
+    #storyTitle {
+      font-size: 36px;
+      width: 100%;
+      border: none;
+      border-bottom: 2px solid #ccc;
+      padding: 15px;
+      border-radius: 5px;
+      outline: none;
+      margin-bottom: 30px;
+      background: transparent;
+    }
+
+    /* Toolbar */
+    #editorToolbar {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    #editorToolbar select,
+    #editorToolbar input[type=color],
+    #editorToolbar button {
+      padding: 10px;
+      font-size: 16px;
+      cursor: pointer;
+      background: #fff;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+
+    /* Notebook lines */
+    .storyEditor {
+      flex: 1;
+      width: 100%;
+      padding: 20px;
+      font-size: 20px;
+      line-height: 1.8;
+      border-radius: 10px;
+      background: repeating-linear-gradient(white, white 35px, #e0e0e0 36px);
+      outline: none;
+      overflow-y: auto;
+      box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.1);
+      white-space: pre-wrap;
+    }
+
+    /* Subtle Post Button */
+    #postBtn {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      padding: 18px 28px;
+      font-size: 18px;
+      border: none;
+      border-radius: 50px;
+      background: rgba(76, 175, 80, 0.85);
+      color: white;
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      transition: 0.3s ease;
+    }
+
+    #postBtn:hover {
+      background: rgba(76, 175, 80, 1);
+    }
+
+    /* Library Section */
+    #library {
+      padding: 40px;
+      background: #fafafa;
+    }
+
+    #storiesContainer {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .storyCard {
+      width: 200px;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      overflow: hidden;
+      background: #fff;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .storyCard img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+    }
+
+    .storyCard h3 {
+      padding: 10px;
+      margin: 0;
+    }
+
+    .storyCard button {
+      margin: 10px;
+      padding: 10px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Library Section -->
+<section id="library">
+  <h2>Library</h2>
+  <div id="storiesContainer"></div>
+</section>
+
+<!-- Floating create story button -->
+<button id="createBtn" onclick="openCreateModal()">+</button>
+
+<!-- Notebook modal -->
+<div id="createModal" class="modal">
+  <span class="close" onclick="closeCreateModal()">&times;</span>
+
+  <!-- Sidebar -->
+  <div id="sidebar">
+    <div class="chapterList" id="chapterList"></div>
+    <button onclick="addChapter()">+ Add Chapter</button>
+  </div>
+
+  <!-- Main editor -->
+  <div id="mainEditor">
+    <input type="text" id="storyTitle" placeholder="Story Title">
+    <input type="file" id="coverImage" accept="image/*" style="margin-bottom:10px;">
+    <div id="editorToolbar">
+      <select id="fontSelect" onchange="changeFont(this.value)">
+        <option value="Arial">Arial</option>
+        <option value="Georgia">Georgia</option>
+        <option value="Courier New">Courier</option>
+      </select>
+      <input type="color" id="fontColor" onchange="changeColor(this.value)">
+      <button onclick="format('bold')"><b>B</b></button>
+      <button onclick="format('italic')"><i>I</i></button>
+      <button onclick="format('underline')"><u>U</u></button>
+    </div>
+    <div id="storyEditor" class="storyEditor" contenteditable="true">Start writing your story here...</div>
+    <button id="postBtn" onclick="postStory()">Post Story</button>
+  </div>
+</div>
+
+<script>
+let stories = [];
+let chapters = [""];
+let currentChapter = 0;
+let autosaveInterval;
+
+// Open modal
+function openCreateModal() {
+  document.getElementById('createModal').style.display = 'block';
+  document.body.style.overflow = 'hidden'; // stop page scroll only while modal is open
+  updateSidebar();
+  startAutosave();
+}
+
+// Close modal
+function closeCreateModal() {
+  document.getElementById('createModal').style.display = 'none';
+  document.body.style.overflow = 'auto'; // restore page scroll
+  stopAutosave();
+}
+
+// Sidebar functions
+function updateSidebar() {
+  const listDiv = document.getElementById('chapterList');
+  listDiv.innerHTML = '';
+  chapters.forEach((ch, i) => {
+    const btn = document.createElement('button');
+    btn.textContent = `Chapter ${i + 1}`;
+    btn.onclick = () => loadChapter(i);
+    listDiv.appendChild(btn);
+  });
+}
+
+function addChapter() {
+  chapters.push("");
+  updateSidebar();
+}
+
+function loadChapter(index) {
+  saveCurrentChapter();
+  currentChapter = index;
+  document.getElementById('storyEditor').innerHTML = chapters[currentChapter] || "";
+  document.getElementById('sidebar').classList.remove('active');
+}
+
+function saveCurrentChapter() {
+  chapters[currentChapter] = document.getElementById('storyEditor').innerHTML;
+}
+
+// Formatting
+function format(cmd) {
+  document.execCommand(cmd, false, null);
+}
+
+function changeFont(font) {
+  document.execCommand("fontName", false, font);
+}
+
+function changeColor(color) {
+  document.execCommand("foreColor", false, color);
+}
+
+// Post story
+function postStory() {
+  saveCurrentChapter();
+  const title = document.getElementById('storyTitle').value.trim();
+  if (!title) return alert("Enter a title!");
+
+  // Cover image
+  const coverFile = document.getElementById('coverImage').files[0];
+  if (coverFile) {
+    const reader = new FileReader();
+    reader.onload = function (e) {
+      addStoryToLibrary(title, chapters.join("<hr>"), e.target.result);
+    }
+    reader.readAsDataURL(coverFile);
+  } else {
+    addStoryToLibrary(title, chapters.join("<hr>"), null); // no cover
+  }
+
+  // Clear modal for next story
+  document.getElementById('storyTitle').value = '';
+  document.getElementById('storyEditor').innerHTML = 'Start writing your story here...';
+  document.getElementById('coverImage').value = '';
+  chapters = [""];
+  currentChapter = 0;
+  closeCreateModal();
+}
+
+// Add story to library visually
+function addStoryToLibrary(title, content, cover) {
+  const container = document.getElementById('storiesContainer');
+  const card = document.createElement('div');
+  card.classList.add('storyCard');
+
+  if (cover) {
+    const img = document.createElement('img');
+    img.src = cover;
+    card.appendChild(img);
+  }
+
+  const titleEl = document.createElement('h3');
+  titleEl.textContent = title;
+  card.appendChild(titleEl);
+
+  const readBtn = document.createElement('button');
+  readBtn.textContent = 'Read Now';
+  readBtn.onclick = () => openStoryModal(title, content);
+  card.appendChild(readBtn);
+
+  container.appendChild(card);
+}
+
+// Optional: open story in a simple modal
+function openStoryModal(title, content) {
+  const storyModal = document.createElement('div');
+  storyModal.style.position = 'fixed';
+  storyModal.style.top = '0';
+  storyModal.style.left = '0';
+  storyModal.style.width = '100%';
+  storyModal.style.height = '100%';
+  storyModal.style.background = 'rgba(0,0,0,0.7)';
+  storyModal.style.display = 'flex';
+  storyModal.style.justifyContent = 'center';
+  storyModal.style.alignItems = 'center';
+  storyModal.style.zIndex = '2000';
+
+  const box = document.createElement('div');
+  box.style.width = '80%';
+  box.style.height = '80%';
+  box.style.background = '#fff';
+  box.style.padding = '20px';
+  box.style.overflowY = 'auto';
+  box.style.borderRadius = '10px';
+  box.innerHTML = `<h2>${title}</h2>${content}`;
+
+  const closeBtn = document.createElement('span');
+  closeBtn.textContent = '×';
+  closeBtn.style.position = 'absolute';
+  closeBtn.style.top = '20px';
+  closeBtn.style.right = '30px';
+  closeBtn.style.fontSize = '36px';
+  closeBtn.style.cursor = 'pointer';
+  closeBtn.onclick = () => storyModal.remove();
+
+  storyModal.appendChild(box);
+  storyModal.appendChild(closeBtn);
+  document.body.appendChild(storyModal);
+}
+
+// Autosave every 5 seconds
+function startAutosave() {
+  autosaveInterval = setInterval(saveCurrentChapter, 5000);
+}
+
+function stopAutosave() {
+  clearInterval(autosaveInterval);
+}
+
+updateSidebar();
+</script>
+
+</body>
+</html>
+
+    
+    <!-- Book Reader Popup -->
+<div id="book-reader-popup" class="book-reader-popup" style="display:none;">
+  <div class="book-reader-header">
+    <button onclick="closeBook()" class="close-btn">✖</button>
+  </div>
+  <iframe id="book-frame" src="" width="100%" height="90%"></iframe>
+</div>
+
+
+ <!-- ===== AUTH SECTION ===== -->
+<section class="auth-section">
+  <div class="auth-container">
+    <!-- Login -->
+    <div class="auth-box login-box">
+      <h2>Login</h2>
+      <input type="email" id="login-email" placeholder="Email">
+      <input type="password" id="login-password" placeholder="Password">
+      <button id="login-btn">Login</button>
+      <p class="switch-text">Don't have an account? <span id="show-signup">Sign Up</span></p>
+    </div>
+    <!-- Signup -->
+    <div class="auth-box signup-box" style="display:none;">
+      <h2>Sign Up</h2>
+      <input type="email" id="signup-email" placeholder="Email">
+      <input type="password" id="signup-password" placeholder="Password">
+      <button id="signup-btn">Sign Up</button>
+      <p class="switch-text">Already have an account? <span id="show-login">Login</span></p>
+    </div>
+  </div>
+</section>
+
+
+  <!-- Your website content goes here -->
+</main>
+<!-- Book Bundle Login Animation -->
+<div id="book-popup" class="book-popup">
+  <img src="[MINITEEN] Official Logo Motion.gif" alt="Book Bundle" class="book-image">
+  <p>Welcome back! 📚</p>
+</div>
+
+
+<!-- Freedom Wall Section -->
+<section class="freedom-wall-section" id="freedom wall">
+  <div class="section-content">
+    <h2 class="section-title">Freedom Wall</h2>
+    <p class="text">Share your thoughts and see what others have posted!</p>
+
+    <!-- New Post Input -->
+    <textarea id="new-post-input" class="expandable-textarea" placeholder="☕ Spill the Tea..."></textarea>
+
+    
+    <!-- Modal for large post input -->
+<div id="post-modal" class="post-modal">
+  <div class="modal-content">
+    <span class="close-btn">&times;</span>
+    <h3>Share Your Thoughts</h3>
+    <textarea id="modal-post-input" placeholder="Write your post here..."></textarea>
+    <button id="submit-modal-post">Post</button>
+  </div>
+</div>
+<!-- Modal for big post input -->
+<div id="post-modal" class="post-modal">
+  <div class="modal-content">
+    <span class="close-btn">&times;</span>
+    <h3>Share Your Thoughts</h3>
+    <textarea id="modal-post-input" placeholder="Write your post here..."></textarea>
+    <button id="submit-modal-post">Post</button>
+  </div>
+</div>
+
+   
+    <button class="add-post-btn" onclick="addPost()">.</button>
+
+
+    <!-- Posts container -->
+    <div id="posts-container">
+      <!-- Existing posts can go here -->
+    </div>
+  </div>
+</section>
+
+<script>
+function addPost() {
+  const input = document.getElementById("new-post-input");
+  const postsContainer = document.getElementById("posts-container");
+
+  if (input.value.trim() === "") {
+    alert("Please write something first!");
+    return;
+  }
+
+  const postDiv = document.createElement("div");
+  postDiv.className = "freedom-post";
+
+  postDiv.innerHTML = `
+    <p class="post-text">${input.value}</p>
+    <h4>Comments</h4>
+    <div class="comments"></div>
+    <textarea class="comment-input" placeholder="Write your comment..."></textarea>
+    <br>
+    <button onclick="addComment(this)">Post Comment</button>
+  `;
+
+  postsContainer.prepend(postDiv); // New posts appear at the top
+  input.value = "";
+}
+
+// Keep your addComment function here or in script.js
+function addComment(button) {
+  const post = button.parentElement;
+  const input = post.querySelector(".comment-input");
+  const commentsDiv = post.querySelector(".comments");
+
+  if (input.value.trim() === "") {
+    alert("Please write a comment first.");
+    return;
+  }
+
+  const comment = document.createElement("p");
+  comment.textContent = input.value;
+
+  commentsDiv.appendChild(comment);
+  input.value = "";
+}
+</script>
+
+
+   <!-- Freedom Wall Section -->
+<section class="freedom-wall-section">
+  <div class="section-content">
+
+    
+
+    <!-- One Freedom Wall Post -->
+     
+    <div class="freedom-post">
+      <p class="post-text">
+        “Sometimes being a student feels overwhelming, but no one talks about it.”
+      </p>
+
+      <h4>Comments</h4>
+      <div class="comments"></div>
+
+      <textarea class="comment-input" placeholder="Write your comment..."></textarea>
+      <br>
+      <button onclick="addComment(this)">Post Comment</button>
+    </div>
+    
+ 
+    <div class="freedom-post">
+  <p class="post-text">This is a post!</p>
+
+  <h4>Comments</h4>
+  <div class="comments"></div>
+
+  <textarea class="comment-input" placeholder="Write a comment..."></textarea>
+  <button onclick="addComment(this)">Post Comment</button>
+</div>
+
+
+     <!-- Post 1 -->
+    <div class="freedom-post">
+      <p class="post-text">
+        “Sometimes being a student feels overwhelmed, but no one talks about it.”
+      </p>
+      <h4>Comments</h4>
+      <div class="comments"></div>
+      <textarea class="comment-input" placeholder="Write your comment..."></textarea>
+      <br>
+      <button onclick="addComment(this)">Post Comment</button>
+    </div>
+
+    <!-- Post 2 -->
+    <div class="freedom-post">
+      <p class="post-text">
+        “Group projects are fun, but sometimes it’s hard to balance everyone’s work.”
+      </p>
+      <h4>Comments</h4>
+      <div class="comments"></div>
+      <textarea class="comment-input" placeholder="Write your comment..."></textarea>
+      <br>
+      <button onclick="addComment(this)">Post Comment</button>
+    </div>
+
+    <!-- Post 3 -->
+    <div class="freedom-post">
+      <p class="post-text">
+        “I love learning new things, but I wish there was more time for creativity in school.”
+      </p>
+      <h4>Comments</h4>
+      <div class="comments"></div>
+      <textarea class="comment-input" placeholder="Write your comment..."></textarea>
+      <br>
+      <button onclick="addComment(this)">Post Comment</button>
+    </div>
+    
+  </div>
+</section>
+
+
+<!-- Contact Section -->
+<section class="contact-section" id="contact">
+  <div class="section-content">
+    <h2 class="section-title">Contact Us</h2>
+    <p class="text">Have questions or ideas? Send us a message and we’ll get back to you!</p>
+
+    <div class="contact-container">
+      <!-- Contact Form -->
+      <form action="#" method="post">
+        <input type="text" name="name" placeholder="Your Name" required>
+        <input type="email" name="email" placeholder="Your Email" required>
+        <input type="tel" name="phone" placeholder="Your Phone Number">
+        <textarea name="message" placeholder="Your Message" rows="6" required></textarea>
+        <button type="submit">Send Message</button>
+      </form>
+
+      <!-- Contact Image -->
+      <div class="contact-image-wrapper">
+        <img src="contact me.png" alt="Contact Image">
+      </div>
+    </div>
+  </div>
+</section>
+
+  </div>
+</section>
+ 
+  </div>
+</section>  
+<!-- Footer -->
+  <footer class="footer-section">
+    <div class="section-content">
+      <p class="copyright-text">📚 LitConnect</p>
+      <div class="social-link-list">
+        <a href="#" class="social-link"><i class="fa-brands fa-facebook"></i></a>
+        <a href="#" class="social-link"><i class="fa-brands fa-instagram"></i></a>
+        <a href="#" class="social-link"><i class="fa-brands fa-x-twitter"></i></a>
+        <a href="#" class="social-link"><i class="fa-brands fa-wordpress"></i></a>
+      </div>
+      <p class="policy-text"><a href="#" class="policy-link">Privacy Policy</a></p>
+    </div>
+  </footer>
+
+  <script>
+    function addPost() {
+      const input = document.getElementById("new-post-input");
+      const postsContainer = document.getElementById("posts-container");
+
+      if (input.value.trim() === "") {
+        alert("Please write something first!");
+        return;
+      }
+
+      const postDiv = document.createElement("div");
+      postDiv.className = "freedom-post";
+      postDiv.innerHTML = `
+        <p class="post-text">${input.value}</p>
+        <h4>Comments</h4>
+        <div class="comments"></div>
+        <textarea class="comment-input" placeholder="Write your comment..."></textarea>
+        <br>
+        <button onclick="addComment(this)">Post Comment</button>
+      `;
+
+      postsContainer.prepend(postDiv); // New posts appear at the top
+      input.value = "";
+    }
+
+    function addComment(button) {
+      const post = button.parentElement;
+      const input = post.querySelector(".comment-input");
+      const commentsDiv = post.querySelector(".comments");
+
+      if (input.value.trim() === "") {
+        alert("Please write a comment first.");
+        return;
+      }
+
+      const comment = document.createElement("p");
+      comment.textContent = input.value;
+      commentsDiv.appendChild(comment);
+      input.value = "";
+    }
+
+    // Auth functions
+    function register() {
+      const email = document.getElementById("signup-email").value;
+      const password = document.getElementById("signup-password").value;
+      auth.createUserWithEmailAndPassword(email, password)
+        .then(userCredential => alert("Registered successfully!"))
+        .catch(error => alert(error.message));
+    }
+
+    function login() {
+      const email = document.getElementById("login-email").value;
+      const password = document.getElementById("login-password").value;
+      auth.signInWithEmailAndPassword(email, password)
+        .then(userCredential => alert("Logged in successfully!"))
+        .catch(error => alert(error.message));
+    }
+
+    function logout() {
+      auth.signOut();
+    }
+
+    function toggleAuthForm() {
+      const loginBox = document.querySelector(".login-box");
+      const signupBox = document.querySelector(".signup-box");
+      loginBox.style.display = loginBox.style.display === "none" ? "block" : "none";
+      signupBox.style.display = signupBox.style.display === "none" ? "block" : "none";
+    }
+
+    // Show/hide content based on login state
+    const mainContent = document.getElementById("main-content");
+    const loginPrompt = document.getElementById("login-prompt");
+    const logoutBtn = document.getElementById("logout-btn");
+    const userInfo = document.getElementById("user-info");
+
+    auth.onAuthStateChanged(user => {
+      if (user) {
+        mainContent.style.display = "block";
+        loginPrompt.style.display = "none";
+        logoutBtn.style.display = "inline-block";
+        userInfo.textContent = "Logged in as: " + user.email;
+      } else {
+        mainContent.style.display = "none";
+        loginPrompt.style.display = "block";
+        logoutBtn.style.display = "none";
+        userInfo.textContent = "No user logged in";
+      }
+    });
+    
+  </script>
+</body>
+</html>
+  </script>
+
+  <script src="script.js"></script>
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Messenger Simulation</title>
+<style>
+/* --- Floating Messenger Button --- */
+#messenger-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 80px;
+    height: 80px;
+    background: #f5c518;
+    color: black;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 36px;
+    cursor: pointer;
+    z-index: 9999;
+    font-weight: bold;
+    animation: pulse 2s infinite;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); box-shadow: 0 4px 20px rgba(0,0,0,0.3); }
+    50% { transform: scale(1.1); box-shadow: 0 8px 25px rgba(0,0,0,0.5); }
+}
+
+/* --- Messenger Popup --- */
+#messenger-popup {
+    position: fixed;
+    bottom: 120px;
+    right: 40px;
+    width: 550px;
+    height: 700px;
+    background: #fff;
+    border-radius: 25px;
+    box-shadow: 0 25px 60px rgba(0,0,0,0.5);
+    display: none;
+    flex-direction: column;
+    overflow: hidden;
+    z-index: 9999;
+    font-family: Arial, sans-serif;
+}
+
+/* Header */
+.messenger-header {
+    background: #f5c518;
+    color: black;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 22px;
+    font-weight: bold;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.2);
+}
+
+#friend-info {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.friend-initial {
+    width: 50px;
+    height: 50px;
+    background: #ffd633;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    font-weight: bold;
+    color: black;
+}
+
+/* Buttons in header */
+#close-popup, #back-btn {
+    background: none;
+    border: none;
+    color: black;
+    font-size: 26px;
+    cursor: pointer;
+}
+
+/* Search */
+#search-friend {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 10px;
+    border-radius: 25px;
+    border: 1px solid #ccc;
+    font-size: 18px;
+    outline: none;
+}
+
+/* Friends List */
+.friends-list {
+    flex: 1;
+    padding: 10px;
+    background: #fff8dc;
+    overflow-y: auto;
+    font-size: 18px;
+}
+
+.friend-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: #fffacd;
+    padding: 16px;
+    border-radius: 20px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 18px;
+    transition: all 0.2s;
+}
+
+.friend-item:hover {
+    background: #f5e270;
+    transform: translateX(5px);
+}
+
+/* Add Friend */
+.add-friend {
+    display: flex;
+    gap: 12px;
+    padding: 16px;
+    border-top: 1px solid #ddd;
+    background: #fffbe0;
+}
+
+.add-friend input {
+    flex: 1;
+    padding: 14px 16px;
+    border-radius: 30px;
+    border: 1px solid #ccc;
+    outline: none;
+    font-size: 18px;
+}
+
+.add-friend button {
+    padding: 14px 22px;
+    border-radius: 30px;
+    border: none;
+    background: #f5c518;
+    color: black;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+.add-friend button:hover {
+    background: #f7d93d;
+}
+
+/* Chat View */
+.chat-view {
+    display: none;
+    flex: 1;
+    flex-direction: column;
+    background: #fffacd;
+    padding: 14px;
+}
+
+#chat-messages {
+    flex: 1;
+    padding: 14px;
+    overflow-y: auto;
+    scroll-behavior: smooth;
+}
+
+#chat-messages::-webkit-scrollbar {
+    width: 10px;
+}
+
+#chat-messages::-webkit-scrollbar-thumb {
+    background: #f5c518;
+    border-radius: 5px;
+}
+
+#chat-messages::-webkit-scrollbar-track {
+    background: #fff8dc;
+}
+
+/* Chat bubbles */
+.message {
+    max-width: 70%;
+    padding: 14px 20px;
+    border-radius: 25px;
+    margin-bottom: 14px;
+    font-size: 18px;
+    word-wrap: break-word;
+    opacity: 0;
+    animation: fadeIn 0.3s forwards;
+}
+
+@keyframes fadeIn {
+    to { opacity: 1; }
+}
+
+.sent {
+    background: #f5c518;
+    color: black;
+    margin-left: auto;
+    position: relative;
+}
+
+.sent .status {
+    display: block;
+    font-size: 12px;
+    color: gray;
+    margin-top: 4px;
+}
+
+.received {
+    background: #fff8dc;
+    color: black;
+    margin-right: auto;
+}
+
+/* Chat input */
+.chat-input {
+    display: flex;
+    gap: 12px;
+    padding: 16px;
+    background: #fffbe0;
+    border-top: 1px solid #ddd;
+}
+
+.chat-input input {
+    flex: 1;
+    padding: 14px 16px;
+    border-radius: 30px;
+    border: 1px solid #ccc;
+    font-size: 18px;
+}
+
+.chat-input button {
+    border: none;
+    background: #f5c518;
+    color: black;
+    padding: 14px 22px;
+    border-radius: 30px;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+.chat-input button:hover {
+    background: #f7d93d;
+}
+</style>
+</head>
+<body>
+
+<!-- Messenger Button -->
+<div id="messenger-btn">💬</div>
+
+<!-- Messenger Popup -->
+<div id="messenger-popup">
+    <!-- HEADER -->
+    <div class="messenger-header">
+        <button id="back-btn" style="display:none">←</button>
+        <div id="friend-info">
+            <div id="friend-avatar" class="friend-initial"></div>
+            <span id="header-title">Messenger</span>
+        </div>
+        <button id="close-popup">✖</button>
+    </div>
+
+    <!-- SEARCH -->
+    <input type="text" id="search-friend" placeholder="Search or add friend..." />
+
+    <!-- FRIENDS LIST -->
+    <div id="friends-view" class="friends-list">
+        <p class="empty">No friends yet</p>
+    </div>
+
+    <!-- CHAT VIEW -->
+    <div id="chat-view" class="chat-view">
+        <div id="chat-messages"></div>
+        <div class="chat-input">
+            <input type="text" id="chat-input" placeholder="Type a message..." />
+            <button id="send-btn">Send</button>
+        </div>
+    </div>
+
+    <!-- ADD FRIEND -->
+    <div class="add-friend">
+        <input type="text" id="friend-name" placeholder="Add a friend..." />
+        <button id="add-friend-btn">Add</button>
+    </div>
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    const messengerBtn = document.getElementById("messenger-btn");
+    const messengerPopup = document.getElementById("messenger-popup");
+    const closePopup = document.getElementById("close-popup");
+
+    const searchInput = document.getElementById("search-friend");
+    const friendsView = document.getElementById("friends-view");
+    const chatView = document.getElementById("chat-view");
+
+    const addFriendBtn = document.getElementById("add-friend-btn");
+    const friendNameInput = document.getElementById("friend-name");
+
+    const backBtn = document.getElementById("back-btn");
+    const headerTitle = document.getElementById("header-title");
+    const friendAvatar = document.getElementById("friend-avatar");
+
+    const chatMessages = document.getElementById("chat-messages");
+    const chatInput = document.getElementById("chat-input");
+    const sendBtn = document.getElementById("send-btn");
+
+    let currentFriend = "";
+    let chats = {};
+    let friends = {}; // name => initial
+
+    function openMessenger() {
+        messengerPopup.style.display = "flex";
+        friendsView.style.display = "block";
+        chatView.style.display = "none";
+        messengerBtn.style.display = "none";
+    }
+
+    function closeMessenger() {
+        messengerPopup.style.display = "none";
+        messengerBtn.style.display = "flex";
+    }
+
+    function openChat(name) {
+        currentFriend = name;
+        headerTitle.textContent = name;
+        friendAvatar.textContent = friends[name];
+        friendsView.style.display = "none";
+        chatView.style.display = "flex";
+        backBtn.style.display = "inline";
+        renderMessages();
+    }
+
+    function backToFriends() {
+        headerTitle.textContent = "Messenger";
+        friendAvatar.textContent = "";
+        friendsView.style.display = "block";
+        chatView.style.display = "none";
+        backBtn.style.display = "none";
+    }
+
+    function renderMessages() {
+        chatMessages.innerHTML = "";
+        if (!chats[currentFriend]) chats[currentFriend] = [];
+
+        chats[currentFriend].forEach(msg => {
+            const div = document.createElement("div");
+            div.className = "message " + msg.type;
+            div.textContent = msg.text;
+
+            if(msg.type === "sent" && msg.status){
+                const span = document.createElement("span");
+                span.className = "status";
+                span.textContent = msg.status;
+                div.appendChild(span);
+            }
+
+            chatMessages.appendChild(div);
+        });
+
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+    }
+
+    function sendMessage() {
+        const text = chatInput.value.trim();
+        if (!text || !currentFriend) return;
+
+        if (!chats[currentFriend]) chats[currentFriend] = [];
+
+        const msgObj = { text: text, type: "sent", status: "Sent" };
+        chats[currentFriend].push(msgObj);
+        renderMessages();
+        chatInput.value = "";
+
+        // Update status to Gotchu
+        setTimeout(() => {
+            msgObj.status = "Gotchu";
+            renderMessages();
+        }, 1200);
+    }
+
+    function addFriend(name){
+        if(!name) return;
+        friends[name] = name[0].toUpperCase();
+
+        const empty = friendsView.querySelector(".empty");
+        if(empty) empty.remove();
+
+        const friendDiv = document.createElement("div");
+        friendDiv.className = "friend-item";
+
+        const initialDiv = document.createElement("div");
+        initialDiv.className = "friend-initial";
+        initialDiv.textContent = friends[name];
+
+        const nameSpan = document.createElement("span");
+        nameSpan.textContent = name;
+
+        friendDiv.appendChild(initialDiv);
+        friendDiv.appendChild(nameSpan);
+        friendDiv.addEventListener("click", ()=>openChat(name));
+        friendsView.appendChild(friendDiv);
+    }
+
+    addFriendBtn.addEventListener("click", ()=>{
+        const name = friendNameInput.value.trim();
+        addFriend(name);
+        friendNameInput.value = "";
+    });
+
+    searchInput.addEventListener("keyup", ()=>{
+        const query = searchInput.value.toLowerCase();
+        let found = false;
+        Object.keys(friends).forEach(name=>{
+            const divs = Array.from(friendsView.children).filter(c=>c.classList.contains("friend-item") && c.children[1].textContent===name);
+            divs.forEach(div=>{
+                if(name.toLowerCase().includes(query)){
+                    div.style.display="flex";
+                    found = true;
+                } else {
+                    div.style.display="none";
+                }
+            });
+        });
+
+        if(!found && query){
+            const existing = friendsView.querySelector(".add-suggest");
+            if(!existing){
+                const addDiv = document.createElement("div");
+                addDiv.className="friend-item add-suggest";
+                const initialDiv = document.createElement("div");
+                initialDiv.className="friend-initial";
+                initialDiv.textContent=query[0].toUpperCase();
+                const nameSpan = document.createElement("span");
+                nameSpan.textContent=`Add "${searchInput.value}"`;
+                addDiv.appendChild(initialDiv);
+                addDiv.appendChild(nameSpan);
+                addDiv.addEventListener("click", ()=>{
+                    addFriend(searchInput.value);
+                    searchInput.value="";
+                    addDiv.remove();
+                });
+                friendsView.appendChild(addDiv);
+            }
+        } else {
+            const existing = friendsView.querySelector(".add-suggest");
+            if(existing) existing.remove();
+        }
+    });
+
+    messengerBtn.addEventListener("click", openMessenger);
+    closePopup.addEventListener("click", closeMessenger);
+    backBtn.addEventListener("click", backToFriends);
+    sendBtn.addEventListener("click", sendMessage);
+    chatInput.addEventListener("keydown", e=>{
+        if(e.key==="Enter") sendMessage();
+    });
+});
+</script>
+</body>
+</html>
+
+
+<script src="script.js"></script>
+
+   <script src="script.js"></script>
+<!-- Firebase SDK -->
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+
+<!-- ===== FIREBASE SDK ===== -->
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+
+<script>
+   
+
+  // ===== MENU TOGGLE =====
+  const navLinks = document.querySelectorAll(".nav-menu .nav-link");
+  const menuOpenButton = document.getElementById("menu-open-button");
+  const menuCloseButton = document.getElementById("menu-close-button");
+
+  menuOpenButton.addEventListener("click", () => document.body.classList.toggle("show-mobile-menu"));
+  menuCloseButton.addEventListener("click", () => menuOpenButton.click());
+  navLinks.forEach(link => link.addEventListener("click", () => menuOpenButton.click()));
+
+  // ===== LOGIN/SIGNUP TOGGLE =====
+  const loginBox = document.querySelector(".login-box");
+  const signupBox = document.querySelector(".signup-box");
+
+  document.getElementById("show-signup").addEventListener("click", () => {
+    loginBox.style.display = "none";
+    signupBox.style.display = "block";
+  });
+  document.getElementById("show-login").addEventListener("click", () => {
+    signupBox.style.display = "none";
+    loginBox.style.display = "block";
+  });
+
+  // ===== SIGNUP =====
+  document.getElementById("signup-btn").addEventListener("click", () => {
+    const email = document.getElementById("signup-email").value.trim();
+    const password = document.getElementById("signup-password").value.trim();
+    if (!email || !password) return alert("Enter email and password!");
+    auth.createUserWithEmailAndPassword(email, password)
+      .then(() => {
+        alert("Sign up successful! You can now login.");
+        signupBox.style.display = "none";
+        loginBox.style.display = "block";
+      })
+      .catch(error => alert(error.message));
+  });
+
+  // ===== LOGIN =====
+  document.getElementById("login-btn").addEventListener("click", () => {
+    const email = document.getElementById("login-email").value.trim();
+    const password = document.getElementById("login-password").value.trim();
+    auth.signInWithEmailAndPassword(email, password)
+      .then(() => {
+        alert(`Welcome back, ${email}!`);
+        document.querySelector(".auth-section").style.display = "none";
+        document.getElementById("main-content").style.display = "block";
+      })
+      .catch(error => alert(error.message));
+  });
+
+  // ===== LOGOUT =====
+  document.getElementById("logout-btn").addEventListener("click", () => {
+    auth.signOut().then(() => {
+      document.querySelector(".auth-section").style.display = "block";
+      document.getElementById("main-content").style.display = "none";
+    });
+  });
+
+  // ===== FREEDOM WALL =====
+  function addPost() {
+    const input = document.getElementById("new-post-input");
+    if (!input.value.trim()) return alert("Write something first!");
+    const postsContainer = document.getElementById("posts-container");
+    const postDiv = document.createElement("div");
+    postDiv.className = "freedom-post";
+    postDiv.innerHTML = `
+      <p class="post-text">${input.value}</p>
+      <h4>Comments</h4>
+      <div class="comments"></div>
+      <textarea class="comment-input" placeholder="Write your comment..."></textarea>
+      <br>
+      <button onclick="addComment(this)">Post Comment</button>
+    `;
+    postsContainer.prepend(postDiv);
+    input.value = "";
+  }
+
+  function addComment(button) {
+    const post = button.parentElement;
+    const input = post.querySelector(".comment-input");
+    const commentsDiv = post.querySelector(".comments");
+    if (!input.value.trim()) return alert("Write a comment first!");
+    const comment = document.createElement("p");
+    comment.textContent = input.value;=CSPViolationReportBody
+    commentsDiv.appendChild(comment);
+    input.value = "";
+  }
+
+</script>
+</body>
+</html>
+
+
+<!-- Book Bundle Login Animation -->
+<div id="book-popup" class="book-popup">
+  <img src="book-bundle.png" alt="Book Bundle" class="book-image">
+  <p>Welcome back! 📚</p>
+</div>
+<!-- HTML -->
+<div id="login-section">
+    <input type="text" id="username" placeholder="Enter username">
+    <button onclick="login()">Login</button>
+    <p id="login-status">Not logged in</p>
+</div>
+
+<div id="freedom-wall">
+    <textarea id="modal-post-input" placeholder="Write a post..." disabled></textarea>
+    <button id="submit-modal-post" disabled>Post</button>
+
+    <div id="posts-container"></div>
+</div>
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BookTalk | Firebase Demo</title>
+  <style>
+    body { font-family: Arial, sans-serif; max-width: 600px; margin: 50px auto; }
+    form { display: flex; gap: 10px; margin-bottom: 20px; }
+    input { flex: 1; padding: 10px; }
+    button { padding: 10px; cursor: pointer; }
+    #postsContainer p { background: #f1f1f1; padding: 10px; border-radius: 5px; margin-bottom: 10px; }
+  </style>
+</head>
+<body>
+  <h1>BookTalk</h1>
+
+  <!-- Form to add posts -->
+  <form id="postForm">
+    <input type="text" id="postInput" placeholder="Write something..." />
+    <button type="submit">Post</button>
+  </form>
+
+  <!-- Container to show posts -->
+  <div id="postsContainer"></div>
+
+  <!-- Firebase -->
+  <script type="module">
+    // ===== Firebase Imports =====
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/12.8.0/firebase-app.js";
+    import { getFirestore, collection, addDoc, onSnapshot, query, orderBy, serverTimestamp } from "https://www.gstatic.com/firebasejs/12.8.0/firebase-firestore.js";
+
+    // ===== Your Firebase Config =====
+    const firebaseConfig = {
+      apiKey: "AIzaSyBMo12MRI6WaOxsqXuwhFDNW_2oOs7wO34",
+      authDomain:"booktalk-60944.firebaseapp.com",
+      projectId: "booktalk-60944",
+      storageBucket: "booktalk-60944.firebasestorage.app",
+      messagingSenderId:  "1088646885822",
+      appId: "1:1088646885822:web:668bf5fc97523b1a7689ef",
+      measurementId: "G-Z6HKRLY1LK"
+    };
+
+    // ===== Initialize Firebase =====
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+
+    // ===== DOM Elements =====
+    const form = document.getElementById("postForm");
+    const postsContainer = document.getElementById("postsContainer");
+
+    // ===== Add Post =====
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const text = document.getElementById("postInput").value.trim();
+      if(!text) return;
+
+      await addDoc(collection(db, "posts"), {
+        text: text,
+        timestamp: serverTimestamp()
+      });
+
+      form.reset();
+    });
+
+    // ===== Show Posts in Real-time =====
+    const q = query(collection(db, "posts"), orderBy("timestamp", "desc"));
+    onSnapshot(q, (snapshot) => {
+      postsContainer.innerHTML = "";
+      snapshot.forEach((doc) => {
+        const post = doc.data();
+        postsContainer.innerHTML += `<p>${post.text}</p>`;
+      });
+    });
+  </script>
+</body>
+</html>
